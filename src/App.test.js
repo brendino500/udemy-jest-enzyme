@@ -1,10 +1,8 @@
-import Enzyme from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
+import Enzyme from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
-import App from './App';
+import App from "./App";
 
-Enzyme.configure({ adapter: new EnzymeAdapter() });
+Enzyme.configure({ adapter: new Adapter() });
 
-test('renders learn react link', () => {
-
-});
+test("renders learn react link", () => {});
