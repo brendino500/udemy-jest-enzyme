@@ -28,9 +28,15 @@ test("renders without error", () => {
   expect(appComponent.length).toBe(1); // finds the first one.
 });
 
-test("renders button", () => {
+test("renders increment button", () => {
   const wrapper = setup();
   const button = findByTestAtt(wrapper, "increment-button");
+  expect(button.length).toBe(1);
+});
+
+test("renders decrement button", () => {
+  const wrapper = setup();
+  const button = findByTestAtt(wrapper, "decrement-button");
   expect(button.length).toBe(1);
 });
 
@@ -59,3 +65,15 @@ test("clicking on button increments counter display", () => {
   const count = findByTestAtt(wrapper, "count").text();
   expect(count).toBe("1");
 });
+
+test("button decreases counter display", () => {
+  const wrapper = setup();
+  const button = findByTestAtt(wrapper, "decrement-button");
+  button.simulate("click");
+  const count = findByTestAtt(wrapper, "count").text();
+  expect(count).toBe("-1");
+});
+
+// Counter can't go below 0
+
+//clearerror on increment
