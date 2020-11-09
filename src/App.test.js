@@ -40,6 +40,10 @@ test("renders counter display", () => {
   expect(counterDisplay.length).toBe(1);
 });
 
-test("counter starts at 0", () => {});
+test("counter starts at 0", () => {
+  const wrapper = setup();
+  const count = findByTestAtt(wrapper, "count").text(); //stores text variable. ALWAYS returns a string
+  expect(count).toBe("0");
+});
 
 test("clicking on button increments counter display", () => {});
