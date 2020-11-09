@@ -14,6 +14,8 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 test("renders without error", () => {
   const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='component-app']"); // finds the attribute to test. Finds every element which matches
+  expect(appComponent.length).toBe(1); // finds the first one.
 });
 
 test("renders button", () => {});
