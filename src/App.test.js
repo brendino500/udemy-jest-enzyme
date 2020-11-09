@@ -46,4 +46,16 @@ test("counter starts at 0", () => {
   expect(count).toBe("0");
 });
 
-test("clicking on button increments counter display", () => {});
+test("clicking on button increments counter display", () => {
+  const wrapper = setup();
+
+  // find button
+  const button = findByTestAtt(wrapper, "increment-button");
+
+  // click button
+  button.simulate("click");
+
+  // find display and test number has been incremented
+  const count = findByTestAtt(wrapper, "count").text();
+  expect(count).toBe("1");
+});
