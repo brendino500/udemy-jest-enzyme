@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
 import React from "react";
 
+import { findByTestAttr } from "../test/testUtils";
 import App from "./App";
 
 EnzymeAdapter.configure({ adapter: new EnzymeAdapter() });
