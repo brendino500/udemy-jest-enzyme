@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-// import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
 import React from "react";
 import { mount } from "enzyme";
 import { findByTestAttr } from "../test/testUtils";
