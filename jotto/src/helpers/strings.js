@@ -23,7 +23,14 @@ function getStringByLanguage(
   languageCode,
   stringKey,
   strings = languageStrings
-) {}
+) {
+  if (!strings[languageCode] || !strings[languageCode][stringKey]) {
+    console.warn(`Could not get string [${stringKey}] for [${languageCode}]`);
+    // fall back to English
+    return strings.en[stringKey];
+  }
+  return strings[languageCode][stringKey];
+}
 
 // for future mocking
 export default {
