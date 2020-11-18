@@ -2,10 +2,9 @@ import { shallow, mount } from "enzyme";
 import React from "react";
 
 import Congrats from "./Congrats";
-import { findByTestAttr, checkProps } from "../test/testUtils";
+import { findByTestAttr } from "../test/testUtils";
 import languageContext from "./contexts/languageContext";
-
-const defaultProps = { success: false };
+import successContext from "./contexts/successContext";
 
 /**
  * Factory function to create a ShallowWrapper for the Congrats component
@@ -20,7 +19,9 @@ const setup = ({ success, language }) => {
 
   return mount(
     <languageContext.Provider value={language}>
-      <Congrats success={success} />
+      <successContext.SuccessProvider value={[success, jest.fn()]}>
+        <Congrats />
+      </successContext.SuccessProvider>
     </languageContext.Provider>
   );
 };
@@ -42,19 +43,14 @@ test("renders without error", () => {
   expect(component.length).toBe(1);
 });
 
-test("renders no text when `success` prop is false", () => {
+test("renders no text when `success` is false", () => {
   const wrapper = setup({ success: false });
   const component = findByTestAttr(wrapper, "component-congrats");
   expect(component.text()).toBe("");
 });
 
-test("renders non-empty congrats message when `success` prop is true", () => {
+test("renders non-empty congrats message when `success` is true", () => {
   const wrapper = setup({ success: true });
   const message = findByTestAttr(wrapper, "congrats-message");
   expect(message.text().length).not.toBe(0);
-});
-
-test("does not throw warning with expect props", () => {
-  const expectedProps = { success: false };
-  checkProps(Congrats, expectedProps);
 });

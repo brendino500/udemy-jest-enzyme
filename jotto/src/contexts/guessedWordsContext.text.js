@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { GuessedWordsProvider, useGuessedWords } from "./guessWordsContext";
+import { GuessedWordsProvider, useGuessedWords } from "./guessedWordsContext";
 import { getByTitle } from "@testing-library/react";
 
 // a functional component that calls useGuessedWords for out tests
